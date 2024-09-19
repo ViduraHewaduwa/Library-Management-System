@@ -1,0 +1,79 @@
+.main-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.container {
+    width: 80%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.container .card {
+    width: 100%;
+    max-width: 300px;
+    min-height: 550px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+}
+
+.card h3 {
+    font-size: 22px;
+    color: #0b0b0be7;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.card span {
+    color: #141414;
+    display: block;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.card .book-details {
+    margin-top: 10px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.book-details p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.borrow-button {
+    margin-top: auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.borrow-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="Booklist.css">
+    <script defer src="search.js"></script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2">
+                <nav>
+                    <div class="navbar">
+                        <div class="logo"><a href="#">Library</a></div>
+                        <ul class="menu">
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="#Books">Books</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+        </tr>
+    </table>
+
+    <div class="search">
+        <div class="search-bar-container">
+            <input id="search-bar" class="search-bar" type="text" class="form-control" placeholder="Search ">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+        </div>
+
+        <div class="search-by-container">
+            <div><input type="radio" name="search-by" value="name" checked><label>Book Name</label></div>
+            <div><input type="radio" name="search-by" value="category"><label>Category</label></div>
+            <div><input type="radio" name="search-by" value="author"><label>Author</label></div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div id="book-container" class="container">
+            <div class="card">
+                <img src="src/GOT.jpg" alt="img">
+                <h3>Game Of Thrones</h3>
+                <div><span>Fiction</span><span>George R.R. Martin</span></div>
+                <div class="book-details">
+                    <p>Set in the Seven Kingdoms of Westeros, where summers and winters last years, the story interweaves various plotlines.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/alchemist.jpg" alt="img">
+                <h3>The Alchemist</h3>
+                <div><span>Education</span><span>Paulo Coelho</span></div>
+                <div class="book-details">
+                    <p>A young shepherd named Santiago travels from Spain to Egypt, following his dream and learning life lessons.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/laws48.jpg" alt="img">
+                <h3>48 Laws of Power</h3>
+                <div><span>Education</span><span>Robert Greene</span></div>
+                <div class="book-details">
+                    <p>A guide to amassing, using, and maintaining power, illustrated through historical examples.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/RandD.jpg" alt="img">
+                <h3>Rich Dad Poor Dad</h3>
+                <div><span>Education</span><span>Robert Kiyosaki</span></div>
+                <div class="book-details">
+                    <p>A personal finance book that advocates financial independence through investing, real estate, and entrepreneurship.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/potter.jpg" alt="img">
+                <h3>Harry Potter</h3>
+                <div><span>Fiction</span><span>J.K. Rowling</span></div>
+                <div class="book-details">
+                    <p>Follow Harry Potter, a young wizard, on his adventures at Hogwarts School of Witchcraft and Wizardry.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/mocking.jpg" alt="img">
+                <h3>To Kill a Mockingbird</h3>
+                <div><span>Novel</span><span>Harper Lee</span></div>
+                <div class="book-details">
+                    <p>A novel set in the American South, dealing with issues of race, class, and justice through the eyes of a young girl.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/flowers.jpg" alt="img">
+                <h3>Flowers in the Attic</h3>
+                <div><span>Novel</span><span>V.C. Andrews</span></div>
+                <div class="book-details">
+                    <p>The story of four siblings who are hidden away in their grandmother's attic and the dark secrets they uncover.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="src/cosmos.jpg" alt="img">
+                <h3>Cosmos</h3>
+                <div><span>Education</span><span>Carl Sagan</span></div>
+                <div class="book-details">
+                    <p>A popular science book exploring the universe, our place in it, and the pursuit of knowledge.</p>
+                    <button class="borrow-button">Borrow</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchBar = document.getElementById('search-bar');
+        const searchBy = document.querySelectorAll('input[name="search-by"]');
+        const bookContainer = document.getElementById('book-container');
+        const cards = bookContainer.getElementsByClassName('card');
+
+        searchBar.addEventListener('input', () => {
+            const searchText = searchBar.value.toLowerCase();
+            let searchByValue;
+            searchBy.forEach((radio) => {
+                if (radio.checked) {
+                    searchByValue = radio.value;
+                }
+            });
+
+            Array.from(cards).forEach((card) => {
+                const bookName = card.getElementsByTagName('h3')[0].innerText.toLowerCase();
+                const category = card.getElementsByTagName('span')[0].innerText.toLowerCase();
+                const author = card.getElementsByTagName('span')[1].innerText.toLowerCase();
+
+                let isVisible = false;
+                if (searchByValue === 'name' && bookName.includes(searchText)) {
+                    isVisible = true;
+                } else if (searchByValue === 'category' && category.includes(searchText)) {
+                    isVisible = true;
+                } else if (searchByValue === 'author' && author.includes(searchText)) {
+                    isVisible = true;
+                }
+
+                card.style.display = isVisible ? '' : 'none';
+            });
+        });
+
+        // Add event listener to all borrow buttons
+        Array.from(document.getElementsByClassName('borrow-button')).forEach((button) => {
+            button.addEventListener('click', () => {
+                const bookName = button.parentElement.parentElement.getElementsByTagName('h3')[0].innerText;
+                alert(`You have borrowed "${bookName}".`);
+            });
+        });
+    });
+</script>
